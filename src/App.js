@@ -5,22 +5,34 @@
 import React from "react";
 import "./App.css";
 import Home from "./page/Home";
+//This line become useless
 import Blogs from "./page/Blogs";
 import { Route, Routes } from "react-router-dom";
 //Nest a new route under the "/blogs" route, the path should be ":blogId", the element should be <BlogPost/>
 import BlogPost from "./components/BlogPost";
 import { allBlogPosts } from "./utils/sampleBlg";
+//The <AllBlogs /> component should display all the blogs in sample blogs to the page.
+import AllBlogs from "./components/Allblog";
+import SubmitBlog from "./page/SubmitBlog";
+/*Set all as deflaut as requested*/
 function App() {
   return (
     <div className="App">
       <header className="App-header">
       <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/blogs" element={<Blogs />}/>
           <Route
               path="/blogs/:blogId"
               element={<BlogPost allBlogPosts={allBlogPosts} />}
             />
+          <Route
+              path="/blogs"
+              element={<AllBlogs allBlogPosts={allBlogPosts} />}
+            />
+          <Route
+            path="/submit-blog"
+            element={<SubmitBlog allBlogPosts={allBlogPosts} />}
+          />
       </Routes>
       </header>
     </div>
